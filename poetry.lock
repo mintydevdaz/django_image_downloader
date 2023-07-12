@@ -586,5 +586,5 @@ test = ["flake8 (>=2.4.0)", "isort (>=4.2.2)", "pytest (>=2.2.3)"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.11"
-content-hash = "4472ba8082c85c9b0ec8301aa1ca27617af9e2256d9fb1c0a6d43b2fa31f0f58"
+python-versions = "^3.11.4"
+content-hash = "5ab961b37735c6ebf995350d6b2d65cbd7144d1c03e59aa80e7a4951dc9a5935"

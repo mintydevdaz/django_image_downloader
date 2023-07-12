@@ -4,10 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["mintydevdaz <mintydevdaz@proton.me>"]
 readme = "README.md"
-packages = [{include = "django_image_downloader"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.11.4"
 django = "^4.2.3"
 validators = "^0.20.0"
 httpx = "^0.24.1"
