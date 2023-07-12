@@ -1,0 +1,63 @@
+{% extends "imghunt/layout.html" %}
+
+{% block body %}
+    <body>
+        <div class="container justify-content-center mx-auto">
+            <!-- Download Buttons -->
+            <div class="card mx-auto mb-4 mt-4" style="width: 700px;">
+                <h4 class="card-header text-center">Success!</h4>
+                <div class="card-body d-flex justify-content-center align-items-center">
+                    <form action="{% url 'imghunt:download_zip' %}" method="get">
+                        <button type="submit" class="btn btn-outline-success btn-lg" style="width: 200px;">Download File</button>
+                    </form>
+                    <div style="width: 20px;"></div>
+                    <button
+                        id="redirectToIndexButton"
+                        type="button"
+                        onclick="redirectToIndex()"
+                        data-url="{% url 'imghunt:index' %}"
+                        class="btn btn-outline-info btn-lg"
+                        style="width: 200px;"
+                    >
+                        Return to Home
+                    </button>
+                </div>
+            </div>
+            <!-- Download Metrics -->
+            <div class="card mx-auto mb-4" style="width: 700px;">
+                <h4 class="card-header text-center">Download Metrics</h4>
+                <div class="card-body">
+                    <ul class="list-inline">
+                        <p>
+                            <li>Search query: <strong>"{{ query }}"</strong></li>
+                            <li>Raw Links Found: <strong>{{ num_raw_links }}</strong></li>
+                            <li>Downloaded Images: <strong>{{ num_dl_images }}</strong></li>
+                            <li>Errors Found: <strong>{{ num_errors }}</strong></li>
+                        </p>
+                    </ul>
+                </div>
+            </div>
+            <!-- Error Section -->
+            {% if error_links %}
+            <div class="container mx-auto text-center mb-4 p-0" style="width: 700px;">
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseErrors" aria-expanded="false" aria-controls="collapseErrors">
+                    Show Error Information
+                </button>
+            </div>
+            <div class="collapse" id="collapseErrors">
+                <div class="card mx-auto mb-4" style="width: 700px;">
+                    <h4 class="card-header text-center">Error Data</h4>
+                    <div class="card-body">
+                        <h5 class="card-title">Image(s) unable to be downloaded</h5>
+                        <ol>
+                            {% for error in error_links %}
+                                <li>{{ error.1 }}</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </body>
+{% endblock %}
